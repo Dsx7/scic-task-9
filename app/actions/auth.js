@@ -6,13 +6,13 @@ export async function login(formData) {
   const email = formData.get('email')
   const password = formData.get('password')
 
-  // Hardcoded Check
+  // Hardcoded Admin Credentials
   if (email === 'admin@example.com' && password === 'password123') {
     const cookieStore = await cookies()
-    // Set cookie valid for 1 day
-    cookieStore.set('auth_token', 'mock_token_123', { secure: true, httpOnly: true, maxAge: 86400 })
+    cookieStore.set('auth_token', 'admin_secret_token', { secure: true, httpOnly: true, maxAge: 86400 })
   } else {
-    throw new Error('Invalid credentials')
+    // For demo purposes, we just return
+    return;
   }
   redirect('/items')
 }

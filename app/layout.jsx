@@ -1,24 +1,30 @@
 import './globals.css'
 import Navbar from './components/Navbar'
+import { cookies } from 'next/headers'
 
 export const metadata = {
-  title: 'MarketApp',
-  description: 'A Next.js 15 Application',
+  title: 'Next.js Marketplace',
+  description: 'Full stack demo app',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies()
+  const token = cookieStore.get('auth_token')
+  const isAdmin = !!token
+
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
-        <Navbar />
-        
-        <div className="flex-grow">
+      <body className={`min-h-screen flex flex-col antialiased ${isAdmin ? 'admin-mode' : ''}`}>
+        <Navbar isAdmin={isAdmin} />
+        <main className="flex-grow">
           {children}
-        </div>
-
-        <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
-          © 2026 MarketApp. All rights reserved.
-        </footer>
+        </main>
+        
+        {!isAdmin && (
+          <footer className="bg-slate-50 border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
+            <p>© 2026 LuxeMarket Inc. Built with Next.js 16.</p>
+          </footer>
+        )}
       </body>
     </html>
   )

@@ -11,6 +11,4 @@ export function middleware(request) {
   }
 }
 
-export const config = {
-  matcher: ['/add-item'],
-}
+export const config = { matcher: ['/add-item'] }
