@@ -20,7 +20,7 @@ A modern, full-stack marketplace application featuring a public storefront and a
 
 1.  **Clone the repository**
     ```bash
-    git clone <your-repo-link>
+    git clone [https://github.com/Dsx7/scic-task-9](https://github.com/Dsx7/scic-task-9)
     cd my-app-frontend
     ```
 
