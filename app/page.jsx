@@ -17,8 +17,8 @@ export default async function Home() {
   return (
     <div className="bg-white text-slate-900 overflow-x-hidden">
       
-      {/* SECTION 1: HERO */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-slate-950 overflow-hidden text-white py-20 px-4">
+      {/* 1. HERO SECTION */}
+      <section className="relative min-h-[85vh] flex items-center justify-center bg-slate-950 overflow-hidden text-white py-20 px-4">
         <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-purple-900/40 pointer-events-none"></div>
         <div className="relative z-10 text-center max-w-4xl mx-auto">
           <span className="inline-block py-1 px-3 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs md:text-sm font-bold mb-6 tracking-wide">
@@ -44,33 +44,23 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: TRENDING PRODUCTS */}
-      <section className="py-16 md:py-24 px-4 md:px-6 bg-white">
+      {/* 2. TRENDING PRODUCTS */}
+      <section className="py-20 px-4 md:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-12 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Trending Now</h2>
               <p className="text-slate-500">Top picks for this week.</p>
             </div>
             <Link href="/items" className="text-indigo-600 font-bold hover:underline">View All &rarr;</Link>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {products.map((item) => (
               <Link href={`/items/${item.id}`} key={item.id} className="group block">
-                <div className="relative h-64 md:h-80 w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 border border-slate-100">
-                  <img 
-                    src={item.image} 
-                    alt={item.name} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                  />
-                  <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                    ${item.price}
-                  </div>
+                <div className="relative h-72 w-full bg-slate-100 rounded-2xl overflow-hidden mb-4 border border-slate-100">
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  {item.name}
-                </h3>
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{item.name}</h3>
                 <p className="text-slate-500 line-clamp-1 text-sm">{item.description}</p>
               </Link>
             ))}
@@ -78,11 +68,32 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SECTION 3: FEATURES */}
-      <section className="py-16 md:py-24 bg-slate-50 px-4 md:px-6">
+      {/* 3. STATS & ABOUT (New Section) */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 className="text-3xl font-bold mb-4">Crafted for Perfectionists.</h2>
+                <p className="text-slate-400 leading-relaxed mb-6">
+                    We started LuxeMarket with a simple mission: to provide high-quality, minimal tech accessories that don't just look good, but perform flawlessly.
+                </p>
+                <div className="grid grid-cols-3 gap-6 border-t border-slate-800 pt-6">
+                    <div><div className="text-3xl font-bold text-indigo-400">10k+</div><div className="text-sm text-slate-500">Users</div></div>
+                    <div><div className="text-3xl font-bold text-indigo-400">500+</div><div className="text-sm text-slate-500">Products</div></div>
+                    <div><div className="text-3xl font-bold text-indigo-400">99%</div><div className="text-sm text-slate-500">Satisfaction</div></div>
+                </div>
+            </div>
+            <div className="h-64 bg-slate-800 rounded-2xl overflow-hidden relative">
+                 {/* Decorative gradient box */}
+                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-purple-600 opacity-20"></div>
+            </div>
+        </div>
+      </section>
+
+      {/* 4. FEATURES */}
+      <section className="py-20 bg-slate-50 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-12 text-slate-900">Why Designers Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: "⚡", title: "Instant Setup", desc: "Connect your workflow in seconds with our API." },
               { icon: "💎", title: "Premium Quality", desc: "Materials sourced from the best manufacturers." },
@@ -97,13 +108,51 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      
-      {/* SECTION 4: NEWSLETTER */}
-      <section className="py-16 md:py-24 bg-indigo-600 text-white px-4 md:px-6">
+
+      {/* 5. TESTIMONIALS (Restored) */}
+      <section className="py-20 px-6 bg-white border-t border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to upgrade your setup?</h2>
+            <h2 className="text-3xl font-bold mb-12">Trusted by Industry Leaders</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-8 bg-slate-50 rounded-2xl text-left">
+                    <p className="italic text-slate-600 mb-4">"The cleanest shopping experience I've ever had. The admin panel is incredibly powerful."</p>
+                    <div className="font-bold text-slate-900">— Sarah Jenkins, Product Designer</div>
+                </div>
+                <div className="p-8 bg-slate-50 rounded-2xl text-left">
+                    <p className="italic text-slate-600 mb-4">"I love the design system. It is simple, fast, and straight to the point."</p>
+                    <div className="font-bold text-slate-900">— Michael Chen, Tech Lead</div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ (New Section) */}
+      <section className="py-20 bg-slate-50 px-6">
+        <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+                <details className="bg-white p-6 rounded-xl border border-slate-200 cursor-pointer group">
+                    <summary className="font-bold text-slate-900 list-none flex justify-between">
+                        Do you ship internationally? <span className="text-indigo-600">+</span>
+                    </summary>
+                    <p className="mt-4 text-slate-600">Yes, we ship to over 100 countries worldwide via DHL Express.</p>
+                </details>
+                <details className="bg-white p-6 rounded-xl border border-slate-200 cursor-pointer group">
+                    <summary className="font-bold text-slate-900 list-none flex justify-between">
+                        What is the return policy? <span className="text-indigo-600">+</span>
+                    </summary>
+                    <p className="mt-4 text-slate-600">We offer a 30-day no-questions-asked return policy on all items.</p>
+                </details>
+            </div>
+        </div>
+      </section>
+      
+      {/* 7. NEWSLETTER */}
+      <section className="py-24 bg-indigo-600 text-white px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to upgrade your setup?</h2>
           <p className="text-indigo-100 mb-10 text-lg">Join 10,000+ creators building their dream workspace.</p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center max-w-md mx-auto w-full">
+          <div className="flex flex-col md:flex-row gap-4 justify-center max-w-md mx-auto">
             <input type="email" placeholder="Enter your email" className="px-6 py-4 rounded-full text-slate-900 w-full outline-none" />
             <button className="bg-slate-900 text-white px-8 py-4 rounded-full font-bold hover:bg-slate-800 transition-colors w-full md:w-auto">
               Subscribe
